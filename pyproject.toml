@@ -1,0 +1,30 @@
+[build-system]
+requires = [
+    "setuptools>=61.0.0",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stilts"
+version = "0.0.1"
+description = "Seismometer derived ground tilt"
+readme = "README.md"
+requires-python = ">=3.6"
+license = {file = "LICENSE.txt"}
+authors = [
+    {name = "Michael Christoffersen"},
+    {email = "mchristo28@gmail.com"}
+]
+dependencies = [
+    "numpy",
+    "matplotlib",
+    "obspy",
+]
+
+[project.urls]
+documentation = "https://github.com/mchristoffersen/stilts/wiki"
+repository = "https://github.com/mchristoffersen/stilts"
+
+[project.scripts]
+stilts_stack = "stilts.bin.stack_tilt:main"

@@ -6,7 +6,7 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
-write_to = "stilts/_version.py"
+write_to = "src/stilts/_version.py"
 
 [project]
 name = "stilts"

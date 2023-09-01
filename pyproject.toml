@@ -1,13 +1,14 @@
 [build-system]
 requires = [
     "setuptools>=61.0.0",
-    "wheel"
+    "setuptools_scm[toml]>=6.2",
 ]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools_scm]
+
 [project]
 name = "stilts"
-version = "0.0.1"
 description = "Seismometer derived ground tilt"
 readme = "README.md"
 requires-python = ">=3.6"

@@ -6,10 +6,12 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
+write_to = "stilts/_version.py"
 
 [project]
 name = "stilts"
 description = "Seismometer derived ground tilt"
+dynamic = ["version"]
 readme = "README.md"
 requires-python = ">=3.6"
 license = {file = "LICENSE.txt"}

@@ -1,2 +1,2 @@
-# Seismometerneigungssignalanalysator
+# Seismometerneigungsignalanalysator
 Seismometer Tilt Signal Analyzer

@@ -1,17 +1,13 @@
 [build-system]
 requires = [
     "setuptools>=61.0.0",
-    "setuptools_scm[toml]>=7.1",
 ]
 build-backend = "setuptools.build_meta"
-
-[tool.setuptools_scm]
-write_to = "src/stilts/_version.py"
 
 [project]
 name = "stilts"
 description = "Seismometer derived ground tilt"
-dynamic = ["version"]
+version = "v0.0.1-alpha"
 readme = "README.md"
 requires-python = ">=3.6"
 license = {file = "LICENSE.txt"}

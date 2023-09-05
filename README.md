@@ -1,2 +1,2 @@
-# stilts
-Seismometer-derived ground tilt
+# Seismometerneigungssignalanalysator
+Seismometer Tilt Signal Analyzer

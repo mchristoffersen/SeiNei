@@ -5,9 +5,9 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "stilts"
-description = "Seismometer derived ground tilt"
-version = "v0.0.1-alpha"
+name = "seinei"
+description = "Seismometerneigungssignalanalysator - Seismometer tilt signal analyzer"
+version = "v0.0.1-alpha0"
 readme = "README.md"
 requires-python = ">=3.6"
 license = {file = "LICENSE.txt"}
@@ -22,8 +22,8 @@ dependencies = [
 ]
 
 [project.urls]
-documentation = "https://github.com/mchristoffersen/stilts/wiki"
-repository = "https://github.com/mchristoffersen/stilts"
+documentation = "https://github.com/mchristoffersen/SeiNei/wiki"
+repository = "https://github.com/mchristoffersen/SeiNei"
 
 [project.scripts]
-stilts_stack = "stilts.bin.stack_tilt:main"
+seinei = "seinei.bin.seinei:main"

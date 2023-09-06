@@ -2,7 +2,7 @@ import argparse
 import configparser
 import sys
 
-import tipsy
+import stilts
 
 # Steps
 # 1. Take config file from command line and list of times from command line or stdin
@@ -15,12 +15,24 @@ import tipsy
 def cli():
     # Command line interface
     parser = argparse.ArgumentParser(
-        description="Generate seismometer derived tilt plots, stacking multiple events"
+        description="""Calculate long-period tilt from broadband seismometer
+        data. Input data can come from local SAC files or via IRIS download."""
     )
     parser.add_argument(
-        "config", type=str, help="Configuration file with sensor and data download info"
+        "-c",
+        "--config",
+        type=str,
+        help="Configuration file station information for IRIS download",
     )
     parser.add_argument("-t", "--times", type=str, help="File with list of event times")
+    parser.add_argument(
+        "-w",
+        "--window",
+        type=float,
+        help="Window time around each event in seconds (default=3600)",
+        default=3600.0,
+    )
+    parser.add_argument("data", nargs="*", default="")
     args = parser.parse_args()
 
     return args
@@ -36,17 +48,17 @@ def readConfig(configFile):
 def main():
     args = cli()
     cfg = readConfig(args.config)
-    
+
     # Read times from file if provided, otherwise use stdin
     if args.times is None:
         times = sys.stdin.readlines()
     else:
         with open(args.times, "r") as f:
             times = f.readlines()
-            
-    times = tipsy.parseTimes(times)
 
-    streams, times = tipsy.downloadStreams(times, cfg["source"])
+    times = stilts.parseTimes(times)
+
+    streams, times = stilts.downloadStreams(times, cfg["source"])
 
     if len(streams) == 0:
         print("No data found at any times.", file=sys.stderr)
@@ -69,9 +81,9 @@ def main():
         for trace in stream:
             trace.data = trace.data[:minLen]
 
-    tilts = tipsy.calcTilt(streams, cfg["sensor"])
-    tipsy.genFigure(streams, tilts, times, cfg["source"])
-    tipsy.saveTilts(tilts, cfg["source"])
+    tilts = stilts.calcTilt(streams, cfg["sensor"])
+    stilts.genFigure(streams, tilts, times, cfg["source"])
+    stilts.saveTilts(tilts, cfg["source"])
     return 0
 
 

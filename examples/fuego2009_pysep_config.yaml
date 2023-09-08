@@ -5,7 +5,7 @@ event_selection: default
 seconds_before_ref: 3600
 seconds_after_ref: 3600
 networks: XT
-stations: F900,F9NW,F9NE
+stations: F900,F9NE
 channels: HHE,HHN
 locations: '*'
 demean: false

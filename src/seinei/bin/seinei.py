@@ -82,12 +82,18 @@ def main():
             )
             dbSplit = 10 * np.log10(np.abs(Ct / Cv))
             args.low_pass_period = 1.0 / np.max(freq[np.where(dbSplit >= 20)])
-            print("Low-pass period: %.2fs" % args.low_pass_period)
+        else:
+            args.low_pass_period = float(args.low_pass_period)
+        
+        print("Low-pass period: %.2fs" % args.low_pass_period)
 
         # Decide on high pass filter period if necessary
         if args.high_pass_period is None:
             args.high_pass_period = tr.stats.npts / tr.stats.sampling_rate / 2
-            print("High-pass period: %.2fs" % args.high_pass_period)
+        else:
+            args.high_pass_period = float(args.high_pass_period)
+
+        print("High-pass period: %.2fs" % args.high_pass_period)
 
         # Linear detrend
         tr.detrend(type="linear")
@@ -96,7 +102,7 @@ def main():
         tr.filter(
             type="bandpass",
             freqmin=1.0/args.high_pass_period,
-            freqmax=1.obspy plot stream0/args.low_pass_period,
+            freqmax=1.0/args.low_pass_period,
             corners=4,
             zerophase=False,
         )

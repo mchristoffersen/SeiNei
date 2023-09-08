@@ -30,7 +30,7 @@ def downloadStreams(times, source):
                 source["component"],
                 time - window,
                 time + window,
-                minimumlength=2*window,
+                minimumlength=2 * window,
                 attach_response=True,
             )
             downloadedTimes.append(time)
@@ -38,7 +38,7 @@ def downloadStreams(times, source):
             print("No complete data found for time: %s" % time, file=sys.stderr)
             continue
 
-        stream.filter("lowpass", freq=1.0/4, corners=3)
+        stream.filter("lowpass", freq=1.0 / 4, corners=3)
         stream.resample(1, no_filter=True)  # decimate to 1 Hz
         print(stream)
         streams.append(stream)

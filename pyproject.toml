@@ -27,3 +27,4 @@ repository = "https://github.com/mchristoffersen/SeiNei"
 
 [project.scripts]
 seinei = "seinei.bin.seinei:main"
+seineiplot = "seinei.bin.seineiplot:main"

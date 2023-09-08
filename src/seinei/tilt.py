@@ -25,12 +25,12 @@ def calcTilt(streams, sensor):
     g = sensor.getfloat("gravity")
 
     for tilt in tilts:
-        tilt.filter("lowpass", freq=1.0/30, corners=3)
+        tilt.filter("lowpass", freq=1.0 / 30, corners=3)
         tilt.detrend(type="polynomial", order=1)
         tilt.taper(0)
-        #print("Hi :)")
-        #tilt.filter("bandpass", freqmin=1.0/2000, freqmax=1.0/100)
-        #print("CHANGE FILTER BACK")
+        # print("Hi :)")
+        # tilt.filter("bandpass", freqmin=1.0/2000, freqmax=1.0/100)
+        # print("CHANGE FILTER BACK")
         # Check that corner frequency is < .5 Hz
         if f0 > 0.5:
             raise RuntimeError(
@@ -75,7 +75,9 @@ def calcTiltVolt(streams, sensor):
             # There are a lot of assumptions here I'm not checking
             # Most importantly - is the first response stage M/S -> Volts?
             del trace.stats.response.response_stages[0]
-        tilt.remove_response(output="DEF", water_level=None, taper=False, zero_mean=False)
+        tilt.remove_response(
+            output="DEF", water_level=None, taper=False, zero_mean=False
+        )
         tilt.detrend(type="constant")
         tilt.filter("lowpass", freq=f0, corners=3)
         # Check that corner frequency is < .5 Hz
@@ -175,8 +177,8 @@ def calcTilt_disp(streams, sensor):
             tr.remove_response(output="DEF", water_level=10)
             tr.integrate(method="cumtrapz")
             tr.filter(type="lowpass", freq=f0, zerophase=False)
-            #tr.filter(type="highpass", freq=1.0/(60*5), zerophase=False)
-            tr.data = tr.data * ((2*np.pi*f0)**2)/sensor.getfloat("gravity")
+            # tr.filter(type="highpass", freq=1.0/(60*5), zerophase=False)
+            tr.data = tr.data * ((2 * np.pi * f0) ** 2) / sensor.getfloat("gravity")
 
             # Remove linear trend from tilt (equivalent to removing mean from voltage)
             # tr.detrend(type="polynomial", order=1)

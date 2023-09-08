@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "seinei"
 description = "Seismometerneigungssignalanalysator - Seismometer tilt signal analyzer"
-version = "v0.0.1-alpha0"
+version = "v0.0.1"
 readme = "README.md"
 requires-python = ">=3.6"
 license = {file = "LICENSE.txt"}

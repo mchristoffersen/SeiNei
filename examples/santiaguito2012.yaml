@@ -11,7 +11,7 @@ seconds_before_ref: 1
 seconds_after_ref: 14400
 networks: YL
 stations: SJAK
-channels: HHE,HHN,HHZ,HAE,HAN
+channels: HHE,HHN,HAE,HAN
 locations: '*'
 demean: false
 detrend: false
